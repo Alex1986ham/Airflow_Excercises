@@ -1,5 +1,6 @@
 import datetime
 import logging
+import os
 
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
@@ -19,7 +20,7 @@ def complete():
 
 dag = DAG(
     "lesson1.demo3",
-    schedule_interval='@hourly',
+    schedule_interval='*/1 * * * *',
     start_date=datetime.datetime.now() - datetime.timedelta(days=1))
 
 hello_world_task = PythonOperator(
